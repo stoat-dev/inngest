@@ -1,7 +1,23 @@
-{{#if plugins.json.linter.value.Issues.length}}
-[![linter](https://img.shields.io/badge/linter-{{ plugins.json.linter.value.Issues.length }}%20issues-red.svg?style=flat)]({{ plugins.static_hosting.linter.link }})
-{{ else }}
-[![linter](https://img.shields.io/badge/linter<{{ plugins.static_hosting.linter.sha }}>-passing-brightgreen.svg?style=flat)]({{ plugins.static_hosting.linter.link }})
-{{/if}}
+### Build Results
 
+<table>
+    <tr>
+        <td>Linter</td>
+        <td>
+            <a href="{{ plugins.static_hosting.linter.link }}">
+                {{#if plugins.json.linter.value.Issues.length}}
+                    <img src="https://img.shields.io/badge/{{ plugins.static_hosting.linter.sha }}-{{ plugins.json.linter.value.Issues.length }}%20issues-red.svg?style=flat" alt="{{ plugins.static_hosting.linter.sha }} failing">
+                {{ else }}
+                    <img src="https://img.shields.io/badge/{{ plugins.static_hosting.linter.sha }}-passing-brightgreen.svg?style=flat" alt="{{ plugins.static_hosting.linter.sha }} passing">
+                {{/if}}
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Tests</td>
+        <td>Row 2 Cell 2</td>
+    </tr>
+</table>
+
+### Test Coverage
 [![test coverage]({{ plugins.static_hosting.coverage_image.link }})]({{ plugins.static_hosting.coverage_html.link }})
