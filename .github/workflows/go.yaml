@@ -39,9 +39,11 @@ jobs:
         with:
           go-version: 1.18
       - name: Test
-        run: go test -race ./...
-
+        run: go test -coverprofile coverage.out -race ./...
+      - name: Generate Coverage Treemap
+        run: |
+          go install github.com/nikolaydubina/go-cover-treemap@latest
+          go-cover-treemap -h 240 -coverprofile coverage.out > coverage.svg
       - name: Run Stoat Action
         uses: stoat-dev/stoat-action@v0
         if: always()
-
