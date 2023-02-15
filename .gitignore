@@ -10,3 +10,4 @@ pkg/devserver/index.html
 .idea
 coverage.out
 coverage.svg
+coverage.html

@@ -40,6 +40,8 @@ jobs:
           go-version: 1.18
       - name: Test
         run: go test -coverprofile coverage.out -race ./...
+      - name: Generate Coverage HTML
+        run: go tool cover -o coverage.html -html=coverage.out
       - name: Generate Coverage Treemap
         run: |
           go install github.com/nikolaydubina/go-cover-treemap@latest

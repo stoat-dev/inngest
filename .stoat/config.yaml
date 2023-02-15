@@ -6,5 +6,7 @@ plugins:
   job_runtime:
     enabled: true
   static_hosting:
-    coverage:
+    coverage_image:
       path: coverage.svg
+    coverage_html:
+      path: coverage.html
