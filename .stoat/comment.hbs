@@ -1,1 +1,7 @@
+{{#if plugins.json.linter.value.Issues.length}}
+[![linter](https://img.shields.io/badge/linter-{{ plugins.json.linter.value.Issues.length }}%20issues-red.svg?style=flat)]({{ plugins.static_hosting.linter.link }})
+{{ else }}
+[![linter](https://img.shields.io/badge/linter<{{ plugins.static_hosting.linter.sha }}>-passing-brightgreen.svg?style=flat)]({{ plugins.static_hosting.linter.link }})
+{{/if}}
+
 [![test coverage]({{ plugins.static_hosting.coverage_image.link }})]({{ plugins.static_hosting.coverage_html.link }})

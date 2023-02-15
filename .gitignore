@@ -11,3 +11,6 @@ pkg/devserver/index.html
 coverage.out
 coverage.svg
 coverage.html
+golangci.html
+golangci.json
+bin

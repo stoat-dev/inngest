@@ -5,8 +5,13 @@ comment_template_file: ".stoat/comment.hbs"
 plugins:
   job_runtime:
     enabled: true
+  json:
+    linter:
+      path: golangci.json
   static_hosting:
     coverage_image:
       path: coverage.svg
     coverage_html:
       path: coverage.html
+    linter:
+      path: golangci.html
