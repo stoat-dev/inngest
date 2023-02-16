@@ -31,7 +31,7 @@ jobs:
       - name: Write Issue Count & Copy File
         if: always()
         run: |
-          echo "{ "issues": ${{ steps.version.outputs.value }} }" > ${{ matrix.os }}-issues.json
+          echo '{ "issues": ${{ steps.version.outputs.value }} }' > ${{ matrix.os }}-issues.json
           cp golangci.html ${{ matrix.os }}-golangci.html
       - name: Run Stoat Action
         uses: stoat-dev/stoat-action@v0
@@ -60,7 +60,7 @@ jobs:
           output: ${{ matrix.os }}-junit.html
       - name: Generate Coverage HTML
         if: always()
-        run: go tool cover -o ${{ matrix.os }}-coverage.html -html=coverage.out
+        run: go tool cover -o coverage.html -html=coverage.out
       - name: Generate Coverage Treemap
         if: always()
         run: |
