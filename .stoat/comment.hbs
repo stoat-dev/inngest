@@ -4,18 +4,24 @@
     <tr>
         <td>Linter</td>
         <td>
+            {{ plugins.static_hosting.linter.sha }}
+        </td>
+        <td>
             <a href="{{ plugins.static_hosting.linter.link }}">
                 {{#if plugins.json.linter.value.Issues.length}}
-                    <img src="https://img.shields.io/badge/{{ plugins.static_hosting.linter.sha }}-{{ plugins.json.linter.value.Issues.length }}%20issues-red.svg?style=flat" alt="{{ plugins.static_hosting.linter.sha }} failing">
+                    <img src="https://img.shields.io/badge/{{ plugins.json.linter.value.Issues.length }}%20issues-red.svg?style=flat" alt="{{ plugins.static_hosting.linter.sha }} failing">
                 {{ else }}
-                    <img src="https://img.shields.io/badge/{{ plugins.static_hosting.linter.sha }}-passing-brightgreen.svg?style=flat" alt="{{ plugins.static_hosting.linter.sha }} passing">
+                    <img src="https://img.shields.io/badge/passing-brightgreen.svg?style=flat" alt="{{ plugins.static_hosting.linter.sha }} passing">
                 {{/if}}
             </a>
         </td>
     </tr>
     <tr>
         <td>Tests</td>
-        <td>Row 2 Cell 2</td>
+        <td>
+            {{ plugins.static_hosting.linter.sha }}
+        </td>
+        <td>todo</td>
     </tr>
 </table>
 
