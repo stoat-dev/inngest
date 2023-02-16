@@ -1,9 +1,9 @@
 name: E2E
 
-on:
-  push:
-    branches: [main]
-  pull_request:
+#on:
+#  push:
+#    branches: [main]
+#  pull_request:
 
 jobs:
   install:
