@@ -5,7 +5,16 @@
         ],
         "timeout": "10m"
     },
+    "output": {
+        "format": "colored-line-number:stdout,html:golangci.html,json:golangci.json"
+    },
+    "linters": {
+        "enable": ["misspell"]
+    },
     "linters-settings": {
+        "misspell": {
+            "ignore-words": []
+        },
         "staticcheck": {
             "checks": [
                 "all",

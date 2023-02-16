@@ -5,3 +5,17 @@ testfns/
 
 main
 pkg/devserver/index.html
+
+.DS_Store
+.idea
+coverage.out
+coverage.svg
+coverage.html
+golangci.html
+golangci.json
+bin
+tests.jsonl
+tests.html
+issues.json
+junit.xml
+junit.html

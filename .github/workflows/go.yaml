@@ -10,7 +10,7 @@ jobs:
     name: lint
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -22,10 +22,25 @@ jobs:
         run: |
           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.50.1
           ./bin/golangci-lint run --verbose
+      - name: Extract Issue Count
+        if: always()
+        id: issues
+        uses: sergeysova/jq-action@v2
+        with:
+          cmd: 'jq ".Issues | length" golangci.json -r'
+      - name: Write Issue Count & Copy File
+        if: always()
+        run: |
+          echo '{ "issues": ${{ steps.issues.outputs.value }} }' > ${{ matrix.os }}-issues.json
+          cp golangci.html ${{ matrix.os }}-golangci.html
+      - name: Run Stoat Action
+        uses: stoat-dev/stoat-action@v0
+        if: always()
+
   test:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -34,4 +49,30 @@ jobs:
         with:
           go-version: 1.18
       - name: Test
-        run: go test -race ./...
+        run: |
+          go install gotest.tools/gotestsum@latest
+          gotestsum --jsonfile tests.jsonl -- -race -coverprofile=coverage.out ./...
+      - name: Write Success
+        if: ${{ success() }}
+        run: |
+          echo '{ "success": true }' > ${{ matrix.os }}-status.json
+      - name: Write Failure
+        if: ${{ failure() }}
+        run: |
+          echo '{ "success": false }' > ${{ matrix.os }}-status.json
+      - name: Generate Test HTML
+        if: always()
+        run: |
+          go install github.com/vakenbolt/go-test-report@latest
+          cat tests.jsonl | go-test-report -o ${{ matrix.os }}-junit.html
+      - name: Generate Coverage HTML
+        if: always()
+        run: go tool cover -o coverage.html -html=coverage.out
+      - name: Generate Coverage Treemap
+        if: always()
+        run: |
+          go install github.com/nikolaydubina/go-cover-treemap@latest
+          go-cover-treemap -h 240 -padding 0 -coverprofile coverage.out > coverage.svg
+      - name: Run Stoat Action
+        uses: stoat-dev/stoat-action@v0
+        if: always()

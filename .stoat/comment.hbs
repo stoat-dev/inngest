@@ -1,0 +1,35 @@
+### Build Results
+
+<table>
+    <tr>
+        <td><strong>Linter</strong></td>
+        <td>
+            <a href="{{ plugins.static_hosting.ubuntu_linter.link }}">
+                {{#if plugins.json.ubuntu_issues.value.issues}}
+                    <img src="https://img.shields.io/badge/ubuntu-{{ plugins.json.ubuntu_issues.value.issues }}%20issues-red.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_linter.sha }} failing">
+                {{ else }}
+                    <img src="https://img.shields.io/badge/ubuntu-passing-brightgreen.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_linter.sha }} passing">
+                {{/if}}
+            </a>
+        </td>
+        <td>{{ plugins.static_hosting.ubuntu_linter.sha }}</td>
+    </tr>
+    <tr>
+        <td><strong>Tests</strong></td>
+        <td>
+            <a href="{{ plugins.static_hosting.ubuntu_test_html.link }}">
+                {{#if plugins.json.status.value.success}}
+                    <img src="https://img.shields.io/badge/ubuntu-passing-brightgreen.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_linter.sha }} passing">
+                {{ else }}
+                    <img src="https://img.shields.io/badge/ubuntu-failed-red.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_linter.sha }} failing">
+                {{/if}}
+            </a>
+        </td>
+        <td>{{ plugins.static_hosting.ubuntu_linter.sha }}</td>
+    </tr>
+</table>
+
+### Test Coverage
+[![test coverage]({{ plugins.static_hosting.coverage_image.link }})]({{ plugins.static_hosting.coverage_html.link }})
+
+{{{ views.plugins.job_runtime.github.chart }}}
