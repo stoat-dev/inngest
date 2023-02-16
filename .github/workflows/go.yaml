@@ -23,11 +23,13 @@ jobs:
           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.50.1
           ./bin/golangci-lint run --verbose
       - name: Extract Issue Count
+        if: always()
         id: issues
         uses: sergeysova/jq-action@v2
         with:
           cmd: 'jq ".Issues | length" golangci.json -r'
-      - name: Write Issue Count & Copy FIle
+      - name: Write Issue Count & Copy File
+        if: always()
         run: |
           echo "{ "issues": ${{ steps.version.outputs.value }} }" > ${{ matrix.os }}-issues.json
           cp golangci.html ${{ matrix.os }}-golangci.html
