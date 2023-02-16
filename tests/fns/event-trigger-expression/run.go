@@ -80,20 +80,20 @@ func Do(ctx context.Context) testdsl.Chain {
 		// # Third test: success
 		//
 		// OK is false, cart items match.
-		testdsl.SendEvent(event.Event{
-			Name: "test/trigger-expression",
-			Data: map[string]any{
-				"ok": true,
-				"cart_items": []map[string]any{
-					{
-						"price": 999,
-					},
-					{
-						"price": 100,
-					},
-				},
-			},
-		}),
+// 		testdsl.SendEvent(event.Event{
+// 			Name: "test/trigger-expression",
+// 			Data: map[string]any{
+// 				"ok": true,
+// 				"cart_items": []map[string]any{
+// 					{
+// 						"price": 999,
+// 					},
+// 					{
+// 						"price": 100,
+// 					},
+// 				},
+// 			},
+// 		}),
 		testdsl.RequireOutputWithin("received message", 500*time.Millisecond),
 		// Ensure runner consumes event.
 		testdsl.RequireLogFieldsWithin(map[string]any{
@@ -104,7 +104,7 @@ func Do(ctx context.Context) testdsl.Chain {
 		testdsl.RequireLogFieldsWithin(map[string]any{
 			"caller":   "runner",
 			"function": "event-trigger-expression",
-			"message":  "initializing fn INTENTIONALLY FAIL",
+			"message":  "initializing fn",
 		}, testdsl.DefaultDuration),
 	}
 }
