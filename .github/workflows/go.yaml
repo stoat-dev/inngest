@@ -31,7 +31,7 @@ jobs:
       - name: Write Issue Count & Copy File
         if: always()
         run: |
-          echo '{ "issues": ${{ steps.version.outputs.value }} }' > ${{ matrix.os }}-issues.json
+          echo '{ "issues": ${{ steps.issues.outputs.value }} }' > ${{ matrix.os }}-issues.json
           cp golangci.html ${{ matrix.os }}-golangci.html
           cat ${{ matrix.os }}-issues.json
       - name: Run Stoat Action
