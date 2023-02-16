@@ -104,7 +104,7 @@ func Do(ctx context.Context) testdsl.Chain {
 		testdsl.RequireLogFieldsWithin(map[string]any{
 			"caller":   "runner",
 			"function": "event-trigger-expression",
-			"message":  "initializing fn",
+			"message":  "initializing fn INTENTIONALLY FAIL",
 		}, testdsl.DefaultDuration),
 	}
 }
