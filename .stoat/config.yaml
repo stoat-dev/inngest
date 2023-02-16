@@ -13,5 +13,7 @@ plugins:
       path: coverage.svg
     coverage_html:
       path: coverage.html
+    test_html:
+      path: junit.html
     linter:
       path: golangci.html

@@ -46,12 +46,15 @@ jobs:
         with:
           go-version: 1.18
       - name: Test
-        run: gotestsum --jsonfile tests.jsonl --junitfile junit.xml -- -race -coverprofile=coverage.out ./...
-      - name: Generate Test Result HTML
-        if: always()
         run: |
-          go get -u github.com/vakenbolt/go-test-report/
-          cat tests.jsonl | go-test-report -o tests.html
+          go install gotest.tools/gotestsum@latest
+          gotestsum --jsonfile tests.jsonl --junitfile junit.xml -- -race -coverprofile=coverage.out ./...
+      - name: Generate Test Report HTML
+        id: xunit-viewer
+        uses: AutoModality/action-xunit-viewer@v1
+        with:
+          results: junit.xml
+          output: junit.html
       - name: Generate Coverage HTML
         if: always()
         run: go tool cover -o coverage.html -html=coverage.out
