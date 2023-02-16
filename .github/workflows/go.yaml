@@ -33,6 +33,7 @@ jobs:
         run: |
           echo '{ "issues": ${{ steps.version.outputs.value }} }' > ${{ matrix.os }}-issues.json
           cp golangci.html ${{ matrix.os }}-golangci.html
+          cat ${{ matrix.os }}-issues.json
       - name: Run Stoat Action
         uses: stoat-dev/stoat-action@v0
         if: always()

@@ -6,7 +6,7 @@
         <td>
             <a href="{{ plugins.static_hosting.ubuntu_linter.link }}">
                 {{#if plugins.json.ubuntu_issues.value.issues}}
-                    <img src="https://img.shields.io/badge/ubuntu-{{ plugins.json.ubuntu_linter.value.Issues.length }}%20issues-red.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_linter.sha }} failing">
+                    <img src="https://img.shields.io/badge/ubuntu-{{ plugins.json.ubuntu_issues.value.issues }}%20issues-red.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_linter.sha }} failing">
                 {{ else }}
                     <img src="https://img.shields.io/badge/ubuntu-passing-brightgreen.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_linter.sha }} passing">
                 {{/if}}
@@ -18,7 +18,7 @@
         <td><strong>Tests</strong></td>
         <td>
             <a href="{{ plugins.static_hosting.ubuntu_test_html.link }}">
-                <img src="https://img.shields.io/badge/ubuntu-results%20{{ plugins.static_hosting.ubuntu_test_html.status }}-lightgray.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_test_html.sha }} {{ plugins.static_hosting.ubuntu_test_html.status }}">
+                <img src="https://img.shields.io/badge/ubuntu-results%20{{ plugins.static_hosting.ubuntu_test_html.status }}-lightcyan.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_test_html.sha }} {{ plugins.static_hosting.ubuntu_test_html.status }}">
             </a>
         </td>
         <td>{{ plugins.static_hosting.ubuntu_linter.sha }}</td>
