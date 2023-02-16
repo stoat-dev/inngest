@@ -64,7 +64,7 @@ func TestQueueEnqueueItem(t *testing.T) {
 		require.Equal(t, QueuePartition{
 			WorkflowID: item.WorkflowID,
 			Priority:   testPriority,
-			AtS:        start.Unix(),
+			AtS:        start.Unix() + 1,
 		}, qp)
 
 		// Ensure that the zscore did not change.
