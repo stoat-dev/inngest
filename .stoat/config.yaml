@@ -8,8 +8,8 @@ plugins:
   json:
     ubuntu_issues:
       path: ubuntu-latest-issues.json
-    windows_issues:
-      path: windows-latest-issues.json
+    status:
+      path: ubuntu-latest-status.json
   static_hosting:
     coverage_image:
       path: coverage.svg
@@ -17,9 +17,5 @@ plugins:
       path: coverage.html
     ubuntu_linter:
       path: ubuntu-latest-golangci.html
-    windows_linter:
-      path: windows-latest-golangci.html
     ubuntu_test_html:
       path: ubuntu-latest-junit.html
-    windows_test_html:
-      path: windows-latest-junit.html

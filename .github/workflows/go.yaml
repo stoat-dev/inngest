@@ -33,7 +33,6 @@ jobs:
         run: |
           echo '{ "issues": ${{ steps.issues.outputs.value }} }' > ${{ matrix.os }}-issues.json
           cp golangci.html ${{ matrix.os }}-golangci.html
-          cat ${{ matrix.os }}-issues.json
       - name: Run Stoat Action
         uses: stoat-dev/stoat-action@v0
         if: always()
@@ -53,6 +52,10 @@ jobs:
         run: |
           go install gotest.tools/gotestsum@latest
           gotestsum --junitfile junit.xml -- -race -coverprofile=coverage.out ./...
+      - name: Write Test Status
+        if: always()
+        run: |
+          echo '{ "success": ${{ success() }} }' > ${{ matrix.os }}-status.json
       - name: Generate Test Report HTML
         id: xunit-viewer
         uses: AutoModality/action-xunit-viewer@v1

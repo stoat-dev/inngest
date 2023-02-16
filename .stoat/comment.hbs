@@ -18,7 +18,11 @@
         <td><strong>Tests</strong></td>
         <td>
             <a href="{{ plugins.static_hosting.ubuntu_test_html.link }}">
-                <img src="https://img.shields.io/badge/ubuntu-results%20{{ plugins.static_hosting.ubuntu_test_html.status }}-lightcyan.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_test_html.sha }} {{ plugins.static_hosting.ubuntu_test_html.status }}">
+                {{#if plugins.json.status.value.success}}
+                    <img src="https://img.shields.io/badge/ubuntu-passing-brightgreen.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_linter.sha }} passing">
+                {{ else }}
+                    <img src="https://img.shields.io/badge/ubuntu-failed-red.svg?style=flat" alt="{{ plugins.static_hosting.ubuntu_linter.sha }} failing">
+                {{/if}}
             </a>
         </td>
         <td>{{ plugins.static_hosting.ubuntu_linter.sha }}</td>
