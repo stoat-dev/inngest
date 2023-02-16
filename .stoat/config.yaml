@@ -6,14 +6,20 @@ plugins:
   job_runtime:
     enabled: true
   json:
-    issues:
-      path: issues.json
+    ubuntu_issues:
+      path: ubuntu-latest-issues.json
+    windows_issues:
+      path: windows-latest-issues.json
   static_hosting:
     coverage_image:
       path: coverage.svg
     coverage_html:
       path: coverage.html
-    test_html:
-      path: junit.html
-    linter:
-      path: golangci.html
+    ubuntu_linter:
+      path: ubuntu-latest-golangci.html
+    windows_linter:
+      path: windows-latest-golangci.html
+    ubuntu_test_html:
+      path: ubuntu-latest-junit.html
+    windows_test_html:
+      path: windows-latest-junit.html
