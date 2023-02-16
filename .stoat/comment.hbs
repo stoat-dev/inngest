@@ -8,7 +8,7 @@
         </td>
         <td>
             <a href="{{ plugins.static_hosting.linter.link }}">
-                {{#if plugins.json.linter.value.Issues.length}}
+                {{#if plugins.json.issues.value.issues}}
                     <img src="https://img.shields.io/badge/{{ plugins.json.linter.value.Issues.length }}%20issues-red.svg?style=flat" alt="{{ plugins.static_hosting.linter.sha }} failing">
                 {{ else }}
                     <img src="https://img.shields.io/badge/passing-brightgreen.svg?style=flat" alt="{{ plugins.static_hosting.linter.sha }} passing">

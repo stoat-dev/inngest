@@ -6,8 +6,8 @@ plugins:
   job_runtime:
     enabled: true
   json:
-    linter:
-      path: golangci.json
+    issues:
+      path: issues.json
   static_hosting:
     coverage_image:
       path: coverage.svg

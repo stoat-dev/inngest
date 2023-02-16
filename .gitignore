@@ -14,4 +14,7 @@ coverage.html
 golangci.html
 golangci.json
 bin
-tests.log
+tests.jsonl
+tests.html
+issues.json
+junit.xml
